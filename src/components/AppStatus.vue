@@ -6,6 +6,7 @@
 import {reactive} from 'vue'
 
 defineProps({type: String})
+
 const typesMap = reactive({
   'active': {class: 'primary', translation: 'Активен'},
   'done': {class: 'primary', translation: 'Завершен'},
