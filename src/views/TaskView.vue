@@ -2,7 +2,7 @@
   <div class="card">
     <h2>Название задачи</h2>
     <p><strong>Статус</strong>: <AppStatus :type="'done'" /></p>
-    <p><strong>Дэдлайн</strong>: {{ new Date().toLocaleDateString() }}</p>
+    <p><strong>Дедлайн</strong>: {{ new Date().toLocaleDateString() }}</p>
     <p><strong>Описание</strong>: Описание задачи</p>
     <div>
       <button class="btn">Взять в работу</button>
