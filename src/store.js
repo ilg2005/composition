@@ -10,5 +10,10 @@ export default createStore({
         addNewTask(state, payload) {
             state.tasks.push(payload)
         }
+    },
+    getters: {
+        getAllTasks(state) {
+            return state.tasks
+        }
     }
 })

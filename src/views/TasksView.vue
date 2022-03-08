@@ -29,8 +29,7 @@ import {useRouter} from 'vue-router'
 
 const store = useStore()
 const router = useRouter()
-const tasks = store.state.tasks
-
+const tasks = store.getters.getAllTasks
 
 
 </script>
