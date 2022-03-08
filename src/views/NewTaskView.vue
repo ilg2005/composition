@@ -22,10 +22,14 @@
 
 
 <script setup>
-import {reactive, computed,} from 'vue'
+import {reactive, computed} from 'vue'
+import {useRouter} from 'vue-router'
+import {useStore} from 'vuex'
+
+const router = useRouter()
+const store = useStore()
 
 const task = reactive({
-  id: Date.now(),
   title: '',
   deadline: '',
   description: '',
@@ -39,6 +43,9 @@ const isValid = computed(() => {
 
 const createTask = () => {
   if (isValid.value) {
+    task.id = Date.now()
+    store.commit('addNewTask', task)
+    router.push('/')
     console.log(task)
   }
 }
