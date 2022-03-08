@@ -22,7 +22,7 @@
 
 
 <script setup>
-import {reactive, computed, } from 'vue'
+import {reactive, computed,} from 'vue'
 
 const task = reactive({
   id: Date.now(),
@@ -32,11 +32,9 @@ const task = reactive({
   status: 'active'
 })
 
-const isValid =
-  computed(() => {
-    return !Object.values(task).includes(null)
-  })
-
+const isValid = computed(() => {
+  return !Object.values(task).includes(null)
+})
 
 
 const createTask = () => {
