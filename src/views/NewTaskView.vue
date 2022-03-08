@@ -3,17 +3,17 @@
     <h1>Создать новую задачу</h1>
     <div class="form-control">
       <label for="title">Название</label>
-      <input type="text" id="title" v-model="task.title">
+      <input type="text" id="title" v-model.trim="task.title">
     </div>
 
     <div class="form-control">
       <label for="date">Дата дедлайна</label>
-      <input type="date" id="date" v-model="task.deadline">
+      <input type="date" id="date" v-model.trim="task.deadline">
     </div>
 
     <div class="form-control">
       <label for="description">Описание</label>
-      <textarea id="description" v-model="task.description"></textarea>
+      <textarea id="description" v-model.trim="task.description"></textarea>
     </div>
 
     <button class="btn primary" :disabled="!isValid">Создать</button>
@@ -26,14 +26,14 @@ import {reactive, computed,} from 'vue'
 
 const task = reactive({
   id: Date.now(),
-  title: null,
-  deadline: null,
-  description: null,
+  title: '',
+  deadline: '',
+  description: '',
   status: 'active'
 })
 
 const isValid = computed(() => {
-  return !Object.values(task).includes(null)
+  return !Object.values(task).includes('')
 })
 
 
