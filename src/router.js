@@ -11,6 +11,10 @@ export default createRouter({
             component: TasksView
         },
         {
+            path: '/:status?',
+            component: TasksView
+        },
+        {
             path: '/new',
             component: NewTaskView
         },

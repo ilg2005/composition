@@ -25,17 +25,33 @@
 <script setup>
 import AppStatus from '../components/AppStatus'
 import {useStore} from 'vuex'
-import {useRouter} from 'vue-router'
+import {useRouter, useRoute} from 'vue-router'
 import ls from "@/use/localStorage";
+import {ref, watch} from "vue";
 
 const store = useStore()
 const router = useRouter()
+const route = useRoute()
 
-const tasks = ls.getTasksFromLocalStorage()
+let tasks = ref(ls.getTasksFromLocalStorage())
 
-if (tasks) {
-  store.commit('updateTasks', tasks)
+if (tasks.value) {
+  store.commit('updateTasks', tasks.value)
 }
+
+let status = route.params.status
+
+watch(() => route.path, () => {
+      status = route.params.status
+      if (status) {
+        tasks.value = store.getters.filterTasksByStatus(status)
+        console.log(tasks.value)
+      } else {
+        tasks.value = store.getters.getAllTasks
+      }
+    }
+)
+
 
 const activeTasksNumber = store.getters.getActiveTasksNumber
 
