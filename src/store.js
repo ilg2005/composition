@@ -14,6 +14,9 @@ export default createStore({
     getters: {
         getAllTasks(state) {
             return state.tasks
+        },
+        getSelectedTask: (state) => (id) => {
+            return state.tasks.find((task) => task.id === +id)
         }
     }
 })

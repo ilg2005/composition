@@ -15,12 +15,18 @@
   </h3>
 </template>
 
-<script>
+<script setup>
 import AppStatus from '../components/AppStatus'
+import {useRoute} from 'vue-router'
+import {useStore} from 'vuex'
 
-export default {
-  components: {AppStatus}
-}
+const route = useRoute()
+const store = useStore()
+
+const id = route.params.id
+const selectedTask = store.getters.getSelectedTask(id)
+console.log(selectedTask)
+
 </script>
 
 <style scoped>
