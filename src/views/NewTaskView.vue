@@ -26,6 +26,7 @@ import {reactive, computed} from 'vue'
 import {useRouter} from 'vue-router'
 import {useStore} from 'vuex'
 import moment from 'moment'
+import ls from "@/use/localStorage";
 
 const router = useRouter()
 const store = useStore()
@@ -41,6 +42,7 @@ const isValid = computed(() => {
   return !Object.values(task).includes('')
 })
 
+
 const createTask = () => {
   if (isValid.value) {
     task.id = Date.now()
@@ -48,6 +50,9 @@ const createTask = () => {
     task.status = moment(task.deadline).unix() >= moment().startOf('day').unix() ? 'active' : 'cancelled'
 
     store.commit('addNewTask', task)
+    ls.updateLocalStorage(store.getters.getAllTasks)
+
+
     router.push('/')
   }
 }

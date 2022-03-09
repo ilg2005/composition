@@ -12,6 +12,9 @@ export default createStore({
         },
         changeSelectedTaskStatus(state, payload) {
             state.tasks.find((task) => task.id === +payload.id).status = payload.status
+        },
+        updateTasks(state, payload) {
+            state.tasks = payload
         }
     },
     getters: {

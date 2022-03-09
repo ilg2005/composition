@@ -1,7 +1,9 @@
 <template>
   <div class="card" v-if="selectedTask">
     <h2>{{ selectedTask.title }}</h2>
-    <p><strong>Статус</strong>: <AppStatus :type="selectedTask.status" /></p>
+    <p><strong>Статус</strong>:
+      <AppStatus :type="selectedTask.status"/>
+    </p>
     <p><strong>Дедлайн</strong>: {{ new Date(selectedTask.deadline).toLocaleDateString() }}</p>
     <p><strong>Описание</strong>: {{ selectedTask.description }}</p>
     <div>
@@ -19,17 +21,18 @@
 import AppStatus from '../components/AppStatus'
 import {useRoute} from 'vue-router'
 import {useStore} from 'vuex'
+import ls from "@/use/localStorage";
 
 const route = useRoute()
 const store = useStore()
 
 const id = route.params.id
 const selectedTask = store.getters.getSelectedTask(id)
-const changeStatus = (status) => store.commit('changeSelectedTaskStatus', {id, status})
-console.log(selectedTask)
+
+const changeStatus = (status) => {
+  store.commit('changeSelectedTaskStatus', {id, status})
+  const tasks = store.getters.getAllTasks
+  ls.updateLocalStorage(tasks)
+}
 
 </script>
-
-<style scoped>
-
-</style>
