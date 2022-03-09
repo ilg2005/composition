@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-white center" v-if="!tasks.length">Задач пока нет</h1>
   <div v-else>
-    <h3 class="text-white">Всего активных задач: 0</h3>
+    <h3 class="text-white">Всего активных задач: {{ activeTasksNumber }}</h3>
     <div class="card"
          v-for="task of tasks"
          :key="task.id"
@@ -29,7 +29,9 @@ import {useRouter} from 'vue-router'
 
 const store = useStore()
 const router = useRouter()
+
 const tasks = store.getters.getAllTasks
+const activeTasksNumber = store.getters.getActiveTasksNumber
 
 
 </script>
