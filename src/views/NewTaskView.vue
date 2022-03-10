@@ -52,7 +52,6 @@ const createTask = () => {
     store.commit('addNewTask', task)
     ls.updateLocalStorage(store.getters.getAllTasks)
 
-
     router.push('/')
   }
 }

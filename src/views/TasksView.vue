@@ -48,11 +48,9 @@ onBeforeMount(() => {
 let adjective = computed(() => status.value ? statusMap[status.value].adj : '')
 
 let tasks = ref(ls.getTasksFromLocalStorage())
-
 if (tasks.value) {
   store.commit('updateTasks', tasks.value)
 }
-
 
 watch(() => route.path, () => {
       status.value = route.params.status
@@ -60,8 +58,5 @@ watch(() => route.path, () => {
 )
 
 tasks = computed(() => store.getters.filterTasksByStatus(status.value))
-
-
-
 
 </script>
