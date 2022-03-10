@@ -1,9 +1,9 @@
 <template>
-  <span :class="['badge', typesMap[type].class ]">{{ typesMap[type].description }}</span>
+  <span :class="['badge', statusMap[type].class ]">{{ statusMap[type].description }}</span>
 </template>
 
 <script setup>
-import {typesMap} from "@/use/typesMap";
+import {statusMap} from "@/use/statusMap";
 
 defineProps({type: String})
 </script>

@@ -8,17 +8,10 @@
       <li>
         <router-link to="/">Все задачи</router-link>
       </li>
-      <li>
-        <router-link to="/active">Активные</router-link>
-      </li>
-      <li>
-        <router-link to="/pending">Выполняются</router-link>
-      </li>
-      <li>
-        <router-link to="/done">Готовые</router-link>
-      </li>
-      <li>
-        <router-link to="/cancelled">Отмененные</router-link>
+      <li v-for="(item, i) in statusMap"
+          :key="i"
+      >
+        <router-link :to="`/${i}`">{{ item.navTitle }}</router-link>
       </li>
       <li>
         <router-link to="/new">Создать</router-link>
@@ -27,10 +20,8 @@
   </nav>
 </template>
 
-<script>
-export default {
-
-}
+<script setup>
+import {statusMap} from "@/use/statusMap";
 </script>
 
 <style scoped>

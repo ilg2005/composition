@@ -28,7 +28,7 @@ import {useStore} from 'vuex'
 import {useRouter, useRoute} from 'vue-router'
 import ls from "@/use/localStorage";
 import {ref, watch, computed, onBeforeMount} from "vue";
-import {typesMap} from "@/use/typesMap";
+import {statusMap} from "@/use/statusMap";
 
 const store = useStore()
 const router = useRouter()
@@ -41,7 +41,7 @@ onBeforeMount(() => {
   tasks = store.getters.filterTasksByStatus(status.value)
 })
 
-let adjective = computed(() => status.value ? typesMap[status.value].adj : '')
+let adjective = computed(() => status.value ? statusMap[status.value].adj : '')
 
 let tasks = ref(ls.getTasksFromLocalStorage())
 
