@@ -35,11 +35,9 @@ onBeforeMount(() => {
   const tasks = ls.getTasksFromLocalStorage()
 
   if (tasks) {
-    store.commit('updateTasks', tasks)
+    selectedTask.value = store.getters.getSelectedTask(id.value)
   }
-  selectedTask.value = store.getters.getSelectedTask(id.value)
 })
-
 
 const changeStatus = (status) => {
   store.commit('changeSelectedTaskStatus', {id: id.value, status})
