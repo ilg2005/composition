@@ -32,9 +32,10 @@ const id = ref()
 
 onBeforeMount(() => {
   id.value = route.params.id
-  const tasks = ls.getTasksFromLocalStorage()
+  let tasks = ls.getTasksFromLocalStorage()
 
   if (tasks) {
+    store.commit('updateTasks', tasks)
     selectedTask.value = store.getters.getSelectedTask(id.value)
   }
 })
