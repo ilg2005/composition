@@ -24,9 +24,6 @@ export default createStore({
         getSelectedTask: (state) => (id) => {
             return state.tasks.find(task => task.id === +id)
         },
-        getActiveTasksNumber(state) {
-            return state.tasks.filter(task => task.status === 'active').length
-        },
         filterTasksByStatus: (state) => (payload = '') => {
             if (payload) {
                 return state.tasks.filter(task => task.status === payload)

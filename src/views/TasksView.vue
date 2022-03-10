@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-white center" v-if="!tasks">Задач пока нет</h1>
   <div v-else>
-    <h3 class="text-white">Всего активных задач: {{ activeTasksNumber }}</h3>
+    <h3 class="text-white">Всего {{ adjective }} задач: {{ tasks.length }}</h3>
     <div class="card"
          v-for="task of tasks"
          :key="task.id"
@@ -28,6 +28,7 @@ import {useStore} from 'vuex'
 import {useRouter, useRoute} from 'vue-router'
 import ls from "@/use/localStorage";
 import {ref, watch, computed, onBeforeMount} from "vue";
+import {typesMap} from "@/use/typesMap";
 
 const store = useStore()
 const router = useRouter()
@@ -39,6 +40,8 @@ onBeforeMount(() => {
   status.value = route.params.status
   tasks = store.getters.filterTasksByStatus(status.value)
 })
+
+let adjective = computed(() => status.value ? typesMap[status.value].adj : '')
 
 let tasks = ref(ls.getTasksFromLocalStorage())
 
@@ -55,8 +58,6 @@ watch(() => route.path, () => {
 tasks = computed(() => store.getters.filterTasksByStatus(status.value))
 
 
-
-const activeTasksNumber = store.getters.getActiveTasksNumber
 
 
 </script>
