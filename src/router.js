@@ -7,10 +7,6 @@ export default createRouter({
     history: createWebHistory(),
     routes: [
         {
-            path: '/',
-            component: TasksView
-        },
-        {
             path: '/:status?',
             component: TasksView
         },
