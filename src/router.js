@@ -16,6 +16,7 @@ export default createRouter({
         },
         {
             path: '/task/:id?',
+            props: true,
             component: TaskView
         },
     ],
