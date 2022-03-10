@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-white center" v-if="!tasks">Задач пока нет</h1>
+  <h1 class="text-white center" v-if="!tasks.length">Задач пока нет</h1>
   <div v-else>
     <h3 class="text-white">Всего {{ adjective }} задач: {{ tasks.length }}</h3>
     <div class="card"
