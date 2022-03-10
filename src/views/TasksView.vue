@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-white center" v-if="!ls.getTasksFromLocalStorage()">Задач пока нет</h1>
+  <h1 class="text-white center" v-if="!tasksFromLS">Задач пока нет</h1>
   <div v-else>
     <h3 class="text-white">Всего {{ adjective }} задач: {{ tasks.length }}</h3>
     <div class="card"
@@ -35,12 +35,12 @@ const router = useRouter()
 const route = useRoute()
 
 let status = ref()
-let tasks = ref()
+const tasksFromLS = ls.getTasksFromLocalStorage()
+
 
 onBeforeMount(() => {
-  tasks = ref(ls.getTasksFromLocalStorage())
-  if (tasks.value) {
-    store.commit('updateTasks', tasks.value)
+  if (tasksFromLS) {
+    store.commit('updateTasks', tasksFromLS)
   }
 
   status.value = route.params.status
@@ -57,6 +57,6 @@ watch(() => route.path, () => {
     }
 )
 
-tasks = computed(() => store.getters.filterTasksByStatus(status.value))
+let tasks = computed(() => store.getters.filterTasksByStatus(status.value))
 
 </script>
