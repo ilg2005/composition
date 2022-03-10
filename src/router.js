@@ -21,7 +21,7 @@ export default createRouter({
         {
             path: '/task/:id?',
             component: TaskView
-        }
+        },
     ],
     linkActiveClass: 'active',
     linkExactActiveClass: 'active'

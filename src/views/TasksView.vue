@@ -38,6 +38,10 @@ let status = ref()
 
 onBeforeMount(() => {
   status.value = route.params.status
+  if (!Object.keys(statusMap).includes(status.value)) {
+    status.value = ''
+    router.push('/')
+  }
   tasks = store.getters.filterTasksByStatus(status.value)
 })
 

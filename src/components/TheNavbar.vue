@@ -23,7 +23,3 @@
 <script setup>
 import {statusMap} from "@/use/statusMap";
 </script>
-
-<style scoped>
-
-</style>
