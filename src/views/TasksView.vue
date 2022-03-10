@@ -35,22 +35,22 @@ const router = useRouter()
 const route = useRoute()
 
 let status = ref()
+let tasks = ref()
 
 onBeforeMount(() => {
+  tasks = ref(ls.getTasksFromLocalStorage())
+  if (tasks.value) {
+    store.commit('updateTasks', tasks.value)
+  }
+
   status.value = route.params.status
   if (!Object.keys(statusMap).includes(status.value)) {
     status.value = ''
     router.push('/')
   }
-  tasks = store.getters.filterTasksByStatus(status.value)
 })
 
 let adjective = computed(() => status.value ? statusMap[status.value].adj : '')
-
-let tasks = ref(ls.getTasksFromLocalStorage())
-if (tasks.value) {
-  store.commit('updateTasks', tasks.value)
-}
 
 watch(() => route.path, () => {
       status.value = route.params.status
