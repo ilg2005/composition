@@ -37,7 +37,6 @@ onBeforeMount(() => {
   if (tasks) {
     store.commit('updateTasks', tasks)
     selectedTask.value = store.getters.getSelectedTask(id.value)
-    console.log(selectedTask.value)
   }
 })
 
