@@ -9,7 +9,3 @@
 import TheNavbar from './components/TheNavbar'
 
 </script>
-
-<style>
-
-</style>
