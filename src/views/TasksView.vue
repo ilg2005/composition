@@ -28,7 +28,7 @@ import {useStore} from 'vuex'
 import {useRouter, useRoute} from 'vue-router'
 import ls from "@/use/localStorage";
 import {ref, watch, computed, onBeforeMount} from "vue";
-import {statusMap} from "@/use/statusMap";
+import {statusMap} from "@/components/AppStatus";
 
 const store = useStore()
 const router = useRouter()

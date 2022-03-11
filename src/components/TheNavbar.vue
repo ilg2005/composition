@@ -21,5 +21,5 @@
 </template>
 
 <script setup>
-import {statusMap} from "@/use/statusMap";
+import {statusMap} from "@/components/AppStatus";
 </script>
