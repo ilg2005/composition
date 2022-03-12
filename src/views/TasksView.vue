@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-white center" v-if="!tasksFromLS.length">Задач пока нет</h1>
+  <h1 class="text-white center" v-if="!tasksInLocalStorage.length">Задач пока нет</h1>
   <div v-else>
     <h3 class="text-white">Всего {{ adjective }} задач: {{ tasks.length }}</h3>
     <div class="card"
@@ -34,7 +34,7 @@ const router = useRouter()
 const route = useRoute()
 
 let status = ref()
-const tasksFromLS = store.getters.getAllTasks
+const tasksInLocalStorage = store.getters.getAllTasks
 
 
 onBeforeMount(() => {
