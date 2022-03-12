@@ -3,7 +3,7 @@ import {createStore} from 'vuex'
 export default createStore({
     state() {
         return {
-            tasks: []
+            tasks: JSON.parse(localStorage.getItem('tasks')) ?? []
         }
     },
     mutations: {
@@ -13,9 +13,7 @@ export default createStore({
         changeSelectedTaskStatus(state, payload) {
             state.tasks.find((task) => task.id === +payload.id).status = payload.status
         },
-        updateTasks(state, payload) {
-            state.tasks = payload
-        }
+
     },
     getters: {
         getAllTasks(state) {

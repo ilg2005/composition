@@ -21,22 +21,16 @@
 import AppStatus from '../components/AppStatus'
 import {useRoute} from 'vue-router'
 import {useStore} from 'vuex'
-import ls from "@/use/localStorage";
 
 const route = useRoute()
 const store = useStore()
 
-const tasksFromLS = ls.getTasksFromLocalStorage()
-let tasks = store.commit('updateTasks', tasksFromLS)
-
 const id = route.params.id
 const selectedTask = store.getters.getSelectedTask(id)
 
-
 const changeStatus = (status) => {
   store.commit('changeSelectedTaskStatus', {id, status})
-  tasks = store.getters.getAllTasks
-  ls.updateLocalStorage(tasks)
+  localStorage.setItem('tasks', JSON.stringify(store.getters.getAllTasks))
 }
 
 </script>

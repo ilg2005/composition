@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-white center" v-if="!tasksFromLS">Задач пока нет</h1>
+  <h1 class="text-white center" v-if="!tasksFromLS.length">Задач пока нет</h1>
   <div v-else>
     <h3 class="text-white">Всего {{ adjective }} задач: {{ tasks.length }}</h3>
     <div class="card"
@@ -26,7 +26,6 @@
 import AppStatus from '../components/AppStatus'
 import {useStore} from 'vuex'
 import {useRouter, useRoute} from 'vue-router'
-import ls from "@/use/localStorage";
 import {ref, watch, computed, onBeforeMount} from "vue";
 import {statusMap} from "@/components/AppStatus";
 
@@ -35,13 +34,10 @@ const router = useRouter()
 const route = useRoute()
 
 let status = ref()
-const tasksFromLS = ls.getTasksFromLocalStorage()
+const tasksFromLS = store.getters.getAllTasks
 
 
 onBeforeMount(() => {
-  if (tasksFromLS) {
-    store.commit('updateTasks', tasksFromLS)
-  }
 
   status.value = route.params.status
   if (!Object.keys(statusMap).includes(status.value)) {
