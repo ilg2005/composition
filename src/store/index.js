@@ -9,9 +9,13 @@ export default createStore({
     mutations: {
         addNewTask(state, payload) {
             state.tasks.push(payload)
+            localStorage.setItem('tasks', JSON.stringify(state.tasks))
+
         },
         changeSelectedTaskStatus(state, payload) {
             state.tasks.find((task) => task.id === +payload.id).status = payload.status
+            localStorage.setItem('tasks', JSON.stringify(state.tasks))
+
         },
 
     },

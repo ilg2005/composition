@@ -30,7 +30,6 @@ const selectedTask = store.getters.getSelectedTask(id)
 
 const changeStatus = (status) => {
   store.commit('changeSelectedTaskStatus', {id, status})
-  localStorage.setItem('tasks', JSON.stringify(store.getters.getAllTasks))
 }
 
 </script>

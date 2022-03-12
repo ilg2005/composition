@@ -49,7 +49,6 @@ const createTask = () => {
     task.status = moment(task.deadline).unix() >= moment().startOf('day').unix() ? 'active' : 'cancelled'
 
     store.commit('addNewTask', task)
-    localStorage.setItem('tasks', JSON.stringify(store.getters.getAllTasks))
 
     router.push('/')
   }
