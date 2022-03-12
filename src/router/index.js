@@ -16,6 +16,10 @@ export default createRouter({
             props: true,
             component: () => import('@/views/TaskView')
         },
+        {
+            path: '/notFound',
+            component: () => import('@/views/Error404View')
+        }
     ],
     linkActiveClass: 'active',
     linkExactActiveClass: 'active'

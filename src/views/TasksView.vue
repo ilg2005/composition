@@ -40,9 +40,9 @@ const tasksInLocalStorage = store.getters.getAllTasks
 onBeforeMount(() => {
 
   status.value = route.params.status
-  if (!Object.keys(statusMap).includes(status.value)) {
+  if (status.value && !Object.keys(statusMap).includes(status.value)) {
     status.value = ''
-    router.push('/')
+    router.push('/notFound')
   }
 })
 
