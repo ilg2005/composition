@@ -2,12 +2,11 @@
   <h1 class="text-white center" v-if="!tasksInLocalStorage.length">Задач пока нет</h1>
   <div v-else>
     <h3 class="text-white">Всего {{ adjective }} задач: {{ tasks.length }}</h3>
-    <div class="card"
-         v-for="task of tasks"
-         :key="task.id"
+    <task-card-view v-for="task of tasks"
+                    :key="task.id"
+                    :task="task"
     >
-      <task-card-view :task="task"></task-card-view>
-    </div>
+    </task-card-view>
   </div>
 </template>
 
