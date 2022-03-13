@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <h3>
-      Freelance
+      Task Manager
     </h3>
 
     <ul class="navbar-menu">
@@ -21,5 +21,5 @@
 </template>
 
 <script setup>
-import {statusMap} from "@/use/statusMap";
+import {statusMap} from "@/components/AppStatus";
 </script>
