@@ -14,7 +14,7 @@ export default createRouter({
         {
             path: '/task/:id?',
             props: true,
-            component: () => import('@/views/TaskView')
+            component: () => import('@/views/CurrentTaskView')
         },
         {
             path: '/notFound',
