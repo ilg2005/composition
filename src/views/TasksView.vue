@@ -6,28 +6,17 @@
          v-for="task of tasks"
          :key="task.id"
     >
-      <h2 class="card-title">
-        {{ task.title }}
-        <AppStatus :type="task.status"/>
-      </h2>
-      <p>
-        <strong>
-          <small>
-            {{ new Date(task.deadline).toLocaleDateString() }}
-          </small>
-        </strong>
-      </p>
-      <button class="btn primary" @click="router.push(`/task/${task.id}`)">Посмотреть</button>
+      <task-card-view :task="task"></task-card-view>
     </div>
   </div>
 </template>
 
 <script setup>
-import AppStatus from '../components/AppStatus'
 import {useStore} from 'vuex'
 import {useRouter, useRoute} from 'vue-router'
 import {ref, watch, computed, onBeforeMount} from "vue";
 import {statusMap} from "@/components/AppStatus";
+import TaskCardView from "@/views/TaskCardView"
 
 const store = useStore()
 const router = useRouter()

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <h3>
-      Freelance
+      Task Manager
     </h3>
 
     <ul class="navbar-menu">
